@@ -1,7 +1,13 @@
 import { createContext } from "react";
 import uuid from "react-uuid";
-import { initialStudents } from "./Student";
-import { initialTeachers } from "./Teatcher";
+import {
+  Teacher,
+  Student,
+  Course,
+  initialStudents,
+  initialTeachers,
+  initalCourses,
+} from "../Types";
 
 type Class = {
   id: string;
@@ -10,18 +16,7 @@ type Class = {
   subject: string;
   students: Student[];
   teachers: Teacher[];
-};
-
-type Student = {
-  id: string;
-  name: string;
-  age: number;
-};
-
-type Teacher = {
-  id: string;
-  name: string;
-  age: number;
+  courses: Course[];
 };
 
 export const initalClass: Class = {
@@ -31,6 +26,7 @@ export const initalClass: Class = {
   subject: "programmering",
   students: initialStudents,
   teachers: initialTeachers,
+  courses: initalCourses,
 };
 
 export const ClassContext = createContext({} as Class);

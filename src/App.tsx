@@ -5,6 +5,7 @@ import ClassList from "./components/class/ClassList";
 import "./app.scss";
 import TeacherList from "./components/teacher/TeacherList";
 import SearchTeacher from "./components/teacher/SearchTeacher";
+import FilterTeacher from "./components/teacher/FilterTeacher";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <ClassList />
         <SearchTeacher />
         <StudentForm />
+        <FilterTeacher />
       </div>
     </ClassContext.Provider>
   );
