@@ -1,0 +1,10 @@
+.student-list {
+  display: flex;
+  align-items: center;
+  padding: 1em;
+  border: 2px solid;
+  border-image: linear-gradient(rgb(255, 0, 85), rgb(255, 128, 0));
+  border-image-slice: 1;
+  flex-direction: column;
+  width: fit-content;
+}
