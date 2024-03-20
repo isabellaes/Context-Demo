@@ -6,6 +6,8 @@ import "./app.scss";
 import TeacherList from "./components/teacher/TeacherList";
 import SearchTeacher from "./components/teacher/SearchTeacher";
 import FilterTeacher from "./components/teacher/FilterTeacher";
+import VechileList from "./components/vechiles/VechileList";
+import { vechiles } from "./Vechile";
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
         <SearchTeacher />
         <StudentForm />
         <FilterTeacher />
+        <VechileList vechiles={vechiles} />
       </div>
     </ClassContext.Provider>
   );

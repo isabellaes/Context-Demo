@@ -75,7 +75,7 @@ const StudentList = () => {
       <ul>
         {result.map((student) => (
           <li key={student.id}>
-            Name: {student.name}, Age: {student.age}
+            Name: {student.name}, Age: {student.age}, Courses: {}
           </li>
         ))}
       </ul>
