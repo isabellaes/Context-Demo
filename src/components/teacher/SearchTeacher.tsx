@@ -1,5 +1,5 @@
 import { useContext, useRef, useState } from "react";
-import { ClassContext } from "../../context/ClassContext";
+import { ClassContext } from "../../context/ClassContextProvider";
 import "../../components/student/studentList.scss";
 
 type Teacher = {
@@ -10,12 +10,12 @@ type Teacher = {
 
 const SearchTeacher = () => {
   const [searchResult, setSearchresult] = useState([] as Teacher[]);
-  const classes = useContext(ClassContext);
+  const { state, dispatch } = useContext(ClassContext);
   const inputRef = useRef<HTMLInputElement>(null);
 
   function handleSearch() {
     if (inputRef.current) {
-      const result = classes.teachers.filter(
+      const result = state.teachers.filter(
         (t) =>
           t.name.toLocaleLowerCase() ===
           inputRef.current?.value.toLocaleLowerCase()

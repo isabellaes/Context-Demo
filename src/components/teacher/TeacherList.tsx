@@ -1,14 +1,14 @@
-import { ClassContext } from "../../context/ClassContext";
+import { ClassContext } from "../../context/ClassContextProvider";
 import { useContext } from "react";
 import "../student/studentList.scss";
 
 const TeacherList = () => {
-  const teachers = useContext(ClassContext);
+  const { state, dispatch } = useContext(ClassContext);
   return (
     <div className="student-list">
       <h2>Teachers:</h2>
       <ul>
-        {teachers.teachers.map((t) => (
+        {state.teachers.map((t) => (
           <li key={t.id}>
             Name: {t.name}, Age: {t.age}
           </li>

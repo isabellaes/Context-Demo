@@ -7,6 +7,16 @@ export type Student = {
   courses: Course[];
 };
 
+export type Class = {
+  id: string;
+  name: string;
+  year: string;
+  subject: string;
+  students: Student[];
+  teachers: Teacher[];
+  courses: Course[];
+};
+
 export type Course =
   | {
       type: "teacher";

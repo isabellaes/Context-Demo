@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ClassContext } from "../../context/ClassContext";
+import { ClassContext } from "../../context/ClassContextProvider";
 import "../student/studentList.scss";
 
 const ClassList = () => {
@@ -7,11 +7,11 @@ const ClassList = () => {
   return (
     <div className="student-list">
       <h2>Class:</h2>
-      <p>Name: {classes.name}</p>
-      <p>Year: {classes.year}</p>
-      <p>Subject: {classes.subject}</p>
-      <p>Students: {classes.students.length}</p>
-      <p>Teachers: {classes.teachers.length}</p>
+      <p>Name: {classes.state.name}</p>
+      <p>Year: {classes.state.year}</p>
+      <p>Subject: {classes.state.subject}</p>
+      <p>Students: {classes.state.students.length}</p>
+      <p>Teachers: {classes.state.teachers.length}</p>
     </div>
   );
 };

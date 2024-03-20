@@ -1,31 +1,26 @@
-import { ClassContext } from "../../context/ClassContext";
+import { ClassContext } from "../../context/ClassContextProvider";
 import { useContext, useEffect, useState } from "react";
 import "./studentList.scss";
-
-type Student = {
-  id: string;
-  name: string;
-  age: number;
-};
+import { Student } from "../../Types";
 
 const StudentList = () => {
   const [result, setResult] = useState([] as Student[]);
-  const students = useContext(ClassContext);
+  const { state, dispatch } = useContext(ClassContext);
 
   useEffect(() => {
-    setResult(students.students);
-  }, []);
+    setResult(state.students);
+  }, [state]);
 
   function handleChange(checked: boolean, value: string) {
     if (checked && value === "all") {
-      setResult(students.students);
+      setResult(state.students);
     }
     if (checked && value === "minor") {
-      const filtered = students.students.filter((s) => s.age < 18);
+      const filtered = state.students.filter((s) => s.age < 18);
       setResult(filtered);
     }
     if (checked && value === "adult") {
-      const filtered = students.students.filter((s) => s.age > 18);
+      const filtered = state.students.filter((s) => s.age > 18);
       setResult(filtered);
     }
   }
@@ -75,7 +70,22 @@ const StudentList = () => {
       <ul>
         {result.map((student) => (
           <li key={student.id}>
-            Name: {student.name}, Age: {student.age}, Courses: {}
+            <p style={{ fontWeight: "bold" }}>Student:</p>
+            Name: {student.name}, Age: {student.age}
+            <p style={{ fontWeight: "bold" }}>Courses:</p>
+            {student.courses.map((c) => {
+              if (c.type === "student") {
+                if (c.finished) {
+                  return (
+                    <p key={c.id}>
+                      Namn: {c.name}, Grade: {c.grade}
+                    </p>
+                  );
+                } else {
+                  return <p key={c.id}>Namn: {c.name}</p>;
+                }
+              }
+            })}
           </li>
         ))}
       </ul>
