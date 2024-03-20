@@ -1,11 +1,11 @@
 import { ClassContext } from "../../context/ClassContextProvider";
 import { useContext, useEffect, useState } from "react";
-import "./studentList.scss";
 import { Student } from "../../Types";
+import "../style.scss";
 
 const StudentList = () => {
   const [result, setResult] = useState([] as Student[]);
-  const { state, dispatch } = useContext(ClassContext);
+  const { state } = useContext(ClassContext);
 
   useEffect(() => {
     setResult(state.students);
@@ -26,7 +26,7 @@ const StudentList = () => {
   }
 
   return (
-    <div className="student-list">
+    <div className="component">
       <h2>Students:</h2>
       <fieldset>
         <legend>Select:</legend>

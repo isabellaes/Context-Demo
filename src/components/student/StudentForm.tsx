@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { ClassContext } from "../../context/ClassContextProvider";
 import uuid from "react-uuid";
 import { initialTeachers } from "../../Types";
-import "../student/studentList.scss";
+import "../style.scss";
 
 const StudentForm = () => {
   const [age, setAge] = useState("");
@@ -47,7 +47,8 @@ const StudentForm = () => {
     });
   }
   return (
-    <div className="student-list">
+    <div className="component">
+      <h2>Add student</h2>
       <label htmlFor="name">Name: </label>
       <input
         type="text"

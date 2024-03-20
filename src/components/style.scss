@@ -1,4 +1,4 @@
-.student-list {
+.component {
   display: flex;
   align-items: center;
   padding: 1em;
@@ -7,4 +7,5 @@
   border-image-slice: 1;
   flex-direction: column;
   width: fit-content;
+  height: fit-content;
 }

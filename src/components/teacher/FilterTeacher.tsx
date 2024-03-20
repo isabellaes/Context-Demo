@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import { ClassContext } from "../../context/ClassContextProvider";
-import "../../components/student/studentList.scss";
+import "../style.scss";
 
 const FilterTeacher = () => {
   const [teacher, setTeacher] = useState("");
-  const { state, dispatch } = useContext(ClassContext);
+  const { state } = useContext(ClassContext);
 
   function handleOption(name: string) {
     const course = state.courses.find((c) => c.name === name);
@@ -14,7 +14,8 @@ const FilterTeacher = () => {
   }
 
   return (
-    <div className="student-list">
+    <div className="component">
+      <h2>Select course to see teacher</h2>
       <select onChange={(e) => handleOption(e.target.value)}>
         <option value="">--Please choose an option--</option>
         {state.courses.map((c) => (

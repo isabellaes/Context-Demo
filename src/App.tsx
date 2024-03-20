@@ -12,12 +12,12 @@ function App() {
     <ClassContextProvider>
       <h1>Student-teacher context demo</h1>
       <div className="app">
-        <StudentList />
-        <TeacherList />
         <ClassList />
         <SearchTeacher />
         <StudentForm />
         <FilterTeacher />
+        <TeacherList />
+        <StudentList />
       </div>
     </ClassContextProvider>
   );

@@ -1,17 +1,18 @@
 import { useContext } from "react";
 import { ClassContext } from "../../context/ClassContextProvider";
-import "../student/studentList.scss";
+import "../style.scss";
 
 const ClassList = () => {
-  const classes = useContext(ClassContext);
+  const { state } = useContext(ClassContext);
   return (
-    <div className="student-list">
+    <div className="component">
       <h2>Class:</h2>
-      <p>Name: {classes.state.name}</p>
-      <p>Year: {classes.state.year}</p>
-      <p>Subject: {classes.state.subject}</p>
-      <p>Students: {classes.state.students.length}</p>
-      <p>Teachers: {classes.state.teachers.length}</p>
+      <p>Name: {state.name}</p>
+      <p>Year: {state.year}</p>
+      <p>Subject: {state.subject}</p>
+      <p>Students: {state.students.length}</p>
+      <p>Teachers: {state.teachers.length}</p>
+      <p>Courses: {state.courses.length}</p>
     </div>
   );
 };

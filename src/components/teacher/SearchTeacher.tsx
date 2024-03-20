@@ -1,6 +1,6 @@
 import { useContext, useRef, useState } from "react";
 import { ClassContext } from "../../context/ClassContextProvider";
-import "../../components/student/studentList.scss";
+import "../style.scss";
 
 type Teacher = {
   id: string;
@@ -10,7 +10,7 @@ type Teacher = {
 
 const SearchTeacher = () => {
   const [searchResult, setSearchresult] = useState([] as Teacher[]);
-  const { state, dispatch } = useContext(ClassContext);
+  const { state } = useContext(ClassContext);
   const inputRef = useRef<HTMLInputElement>(null);
 
   function handleSearch() {
@@ -26,7 +26,8 @@ const SearchTeacher = () => {
     }
   }
   return (
-    <div className="student-list">
+    <div className="component">
+      <h2>Search teacher by name</h2>
       <input type="text" placeholder="Name..." ref={inputRef} />
       <button onClick={handleSearch}>Search</button>
 

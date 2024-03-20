@@ -1,11 +1,11 @@
 import { ClassContext } from "../../context/ClassContextProvider";
 import { useContext } from "react";
-import "../student/studentList.scss";
+import "../style.scss";
 
 const TeacherList = () => {
-  const { state, dispatch } = useContext(ClassContext);
+  const { state } = useContext(ClassContext);
   return (
-    <div className="student-list">
+    <div className="component">
       <h2>Teachers:</h2>
       <ul>
         {state.teachers.map((t) => (
