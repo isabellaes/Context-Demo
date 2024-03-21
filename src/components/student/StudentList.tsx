@@ -2,10 +2,13 @@ import { ClassContext } from "../../context/ClassContextProvider";
 import { useContext, useEffect, useState } from "react";
 import { Student } from "../../Types";
 import "../style.scss";
+import EditForm from "./EditForm";
 
 const StudentList = () => {
   const [result, setResult] = useState([] as Student[]);
   const { state, dispatch } = useContext(ClassContext);
+  const [edit, setEdit] = useState({} as Student);
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     setResult(state.students);
@@ -16,6 +19,11 @@ const StudentList = () => {
       type: "RemoveStudent",
       payload: id,
     });
+  }
+
+  function handleEdit(student: Student) {
+    setEdit(student);
+    setModalOpen(true);
   }
 
   function handleChange(checked: boolean, value: string) {
@@ -93,10 +101,21 @@ const StudentList = () => {
                 }
               }
             })}
-            <button className="delete-btn" onClick={() => handleDelete(student.id)}>Delete</button>
+            <button onClick={() => handleEdit(student)}>Edit</button>
+            <button
+              className="delete-btn"
+              onClick={() => handleDelete(student.id)}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>
+      {modalOpen ? (
+        <EditForm student={edit} onClose={() => setModalOpen(false)} />
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

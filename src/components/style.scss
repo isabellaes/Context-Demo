@@ -8,6 +8,7 @@
   flex-direction: column;
   width: fit-content;
   height: fit-content;
+  background-color: white;
 }
 
 .delete-btn {
@@ -15,4 +16,16 @@
   background-color: rgb(255, 167, 167);
   border-radius: 2px;
   padding: 2px;
+}
+
+.edit-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.678);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }

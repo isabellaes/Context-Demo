@@ -30,7 +30,11 @@ export type InitalClasState = {
 
 type Action =
   | { type: "AddStudent"; payload: Student }
-  | { type: "RemoveStudent"; payload: string };
+  | { type: "RemoveStudent"; payload: string }
+  | {
+      type: "EditStudent";
+      payload: Student;
+    };
 
 const reducer = (state: Class, action: Action) => {
   switch (action.type) {
@@ -51,6 +55,22 @@ const reducer = (state: Class, action: Action) => {
         year: state.year,
         subject: state.subject,
         students: state.students.filter((s) => s.id !== action.payload),
+        teachers: state.teachers,
+        courses: state.courses,
+      };
+    case "EditStudent":
+      return {
+        id: state.id,
+        name: state.name,
+        year: state.year,
+        subject: state.subject,
+        students: state.students.map((s) => {
+          if (s.id === action.payload.id) {
+            return action.payload;
+          } else {
+            return s;
+          }
+        }),
         teachers: state.teachers,
         courses: state.courses,
       };
