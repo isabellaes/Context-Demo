@@ -50,7 +50,7 @@ const reducer = (state: Class, action: Action) => {
         name: state.name,
         year: state.year,
         subject: state.subject,
-        students: state.students.filter((s) => s.id === action.payload),
+        students: state.students.filter((s) => s.id !== action.payload),
         teachers: state.teachers,
         courses: state.courses,
       };

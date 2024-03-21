@@ -5,11 +5,18 @@ import "../style.scss";
 
 const StudentList = () => {
   const [result, setResult] = useState([] as Student[]);
-  const { state } = useContext(ClassContext);
+  const { state, dispatch } = useContext(ClassContext);
 
   useEffect(() => {
     setResult(state.students);
   }, [state]);
+
+  function handleDelete(id: string) {
+    dispatch({
+      type: "RemoveStudent",
+      payload: id,
+    });
+  }
 
   function handleChange(checked: boolean, value: string) {
     if (checked && value === "all") {
@@ -86,6 +93,7 @@ const StudentList = () => {
                 }
               }
             })}
+            <button className="delete-btn" onClick={() => handleDelete(student.id)}>Delete</button>
           </li>
         ))}
       </ul>
