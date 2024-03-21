@@ -28,7 +28,9 @@ export type InitalClasState = {
   dispatch: React.Dispatch<Action>;
 };
 
-type Action = { type: "AddStudent"; payload: Student };
+type Action =
+  | { type: "AddStudent"; payload: Student }
+  | { type: "RemoveStudent"; payload: string };
 
 const reducer = (state: Class, action: Action) => {
   switch (action.type) {
@@ -42,7 +44,16 @@ const reducer = (state: Class, action: Action) => {
         teachers: state.teachers,
         courses: state.courses,
       };
-
+    case "RemoveStudent":
+      return {
+        id: state.id,
+        name: state.name,
+        year: state.year,
+        subject: state.subject,
+        students: state.students.filter((s) => s.id === action.payload),
+        teachers: state.teachers,
+        courses: state.courses,
+      };
     default:
       return state;
   }

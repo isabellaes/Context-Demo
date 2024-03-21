@@ -6,19 +6,53 @@ import TeacherList from "./components/teacher/TeacherList";
 import SearchTeacher from "./components/teacher/SearchTeacher";
 import FilterTeacher from "./components/teacher/FilterTeacher";
 import ClassContextProvider from "./context/ClassContextProvider";
+import Header from "./components/header/Header";
+import Navbar from "./components/navbar/Navbar";
+import { useState } from "react";
+
+type NavItem = {
+  type: "STUDENT" | "TEACHER" | "COURSES";
+};
 
 function App() {
+  const [selected, setSelected] = useState({} as NavItem);
+
+  function getContent() {
+    switch (selected.type) {
+      case "STUDENT":
+        return (
+          <>
+            <StudentForm />
+            <StudentList />
+          </>
+        );
+
+      case "TEACHER":
+        return (
+          <>
+            <SearchTeacher />
+            <FilterTeacher />
+            <TeacherList />
+          </>
+        );
+
+      case "COURSES":
+        return (
+          <>
+            <ClassList />
+          </>
+        );
+
+      default:
+        <ClassList />;
+        break;
+    }
+  }
   return (
     <ClassContextProvider>
-      <h1>Student-teacher context demo</h1>
-      <div className="app">
-        <ClassList />
-        <SearchTeacher />
-        <StudentForm />
-        <FilterTeacher />
-        <TeacherList />
-        <StudentList />
-      </div>
+      <Header />
+      <Navbar onClick={setSelected} />
+      <div className="app">{getContent()}</div>
     </ClassContextProvider>
   );
 }
